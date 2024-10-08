@@ -52,7 +52,7 @@ router.post('/create', async (req, res) => {
 });
 router.post('/createmany', async (req, res) => {
   const requests = req.body;
-  const hashed = [];
+  const hashed: User[] = [];
   for (let item of requests) {
     const hashedPassword = await bcrypt.hash(item.password, 10);
     item.password = hashedPassword;
@@ -65,7 +65,7 @@ router.post('/createmany', async (req, res) => {
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email,
-      role: user.email,
+      role: user.role,
     };
   });
   res.send(result);
