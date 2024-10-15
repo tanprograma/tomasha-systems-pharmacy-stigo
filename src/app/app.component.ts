@@ -1,8 +1,17 @@
-import { Component, inject, OnInit, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  AfterViewInit,
+  signal,
+  PLATFORM_ID,
+} from '@angular/core';
 
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { UserComponent } from './components/user/user.component';
+import { Store } from './interfaces/store';
+import { ShopService } from './services/shop.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +25,6 @@ export class AppComponent implements OnInit {
 
   // route=inject(ActivatedRoute)
   title = 'HARDWARE';
-  ngOnInit(): void {
-    // this.setAPI_URL();
-  }
+
+  ngOnInit(): void {}
 }
