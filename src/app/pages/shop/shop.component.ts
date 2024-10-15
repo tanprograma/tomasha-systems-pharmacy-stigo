@@ -93,16 +93,11 @@ export class ShopComponent implements OnInit {
     // console.log(store_id, store_name);
   }
   getStoreConfig() {
-    const store = this.shopService.getCurrentStore();
-    if (store != undefined) {
-      return store;
-    } else {
-      const store = {
-        store_name: this.route.snapshot.paramMap.get('name') as string,
-        store_id: this.route.snapshot.paramMap.get('id') as string,
-      };
-      this.shopService.setCurrentStore(store);
-      return store;
-    }
+    const store = {
+      store_name: this.route.snapshot.paramMap.get('name') as string,
+      store_id: this.route.snapshot.paramMap.get('id') as string,
+    };
+    this.shopService.setCurrentStore(store);
+    return store;
   }
 }
