@@ -41,6 +41,7 @@ export class ShopSellBackdateComponent {
     product: ['', Validators.required],
     unit: ['', Validators.required],
     quantity: [0, Validators.required],
+    customer_id: [''],
   });
   discount = new FormControl(0);
   units: { name: string; value: number }[] = [];
@@ -70,6 +71,7 @@ export class ShopSellBackdateComponent {
         createdAt: new Date(
           this.item_form.value.date ?? ('' as string)
         ).toISOString(),
+        customer: this.item_form.value.customer_id ?? '0000',
         discount: this.discount.value ?? 0,
         store: this.storeConfig().store_id,
         products: this.items.map((item) => ({
@@ -81,6 +83,9 @@ export class ShopSellBackdateComponent {
         if (res.status) {
           this.items = [];
           this.discount.patchValue(0);
+          this.item_form.patchValue({
+            customer_id: '',
+          });
           const result = res.result as Sale;
           this.sales.update((v) => [result, ...v].slice(0, 5));
         }
