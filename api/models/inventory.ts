@@ -12,5 +12,6 @@ const schema = new Schema<Inventory>({
   product: String,
   prices: [priceSchema],
   quantity: Number,
+  expiry: String,
 });
 export const InventoryModel = model('Inventories', schema);
