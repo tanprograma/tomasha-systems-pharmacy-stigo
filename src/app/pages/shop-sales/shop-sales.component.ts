@@ -18,6 +18,8 @@ import { Sale } from '../../interfaces/sale';
 import { forkJoin } from 'rxjs';
 import { SaleFormItemsComponent } from '../../components/sale-form-items/sale-form-items.component';
 import { SalesInfoComponent } from '../../components/sales-info/sales-info.component';
+import { RequestAllertComponent } from '../../components/request-allert/request-allert.component';
+import { Allert } from '../../interfaces/allert';
 
 @Component({
   selector: 'app-shop-sales',
@@ -29,12 +31,16 @@ import { SalesInfoComponent } from '../../components/sales-info/sales-info.compo
     SaleFormItemsComponent,
     RouterLink,
     SalesInfoComponent,
+    RequestAllertComponent,
   ],
   templateUrl: './shop-sales.component.html',
   styleUrl: './shop-sales.component.scss',
 })
 export class ShopSalesComponent implements OnInit {
   plusIcon = faPlus;
+  allert: Allert = {
+    loading: false,
+  };
   formBuilder = inject(FormBuilder);
   item_form = this.formBuilder.group({
     customer_id: [''],
@@ -65,6 +71,11 @@ export class ShopSalesComponent implements OnInit {
   }
   submitSales() {
     // creating a sale and registering to sales stack
+    this.allert = {
+      ...this.allert,
+      loading: true,
+      message: 'submitting dispensed items',
+    };
     this.shopService
       .createSale({
         discount: this.discount.value ?? 0,
@@ -84,8 +95,23 @@ export class ShopSalesComponent implements OnInit {
           });
           const result = res.result as Sale;
           this.sales.update((v) => [result, ...v].slice(0, 5));
+          this.allert = {
+            ...this.allert,
+            status: true,
+            message: 'items dispensed successfully',
+          };
+        }
+        if (res.status == false) {
+          this.allert = {
+            ...this.allert,
+            status: false,
+            message: 'could not dispensed items',
+          };
         }
       });
+  }
+  handleAllert(status: boolean) {
+    this.allert = { ...this.allert, loading: false, message: '' };
   }
   addItem() {
     this.items.push({

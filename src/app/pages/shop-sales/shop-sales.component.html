@@ -70,7 +70,7 @@
     ></sale-form-items>
   </div>
   }
-  <div class="component flex flex-center">
+  <!-- <div class="component flex flex-center">
     <details>
       <summary>apply discount</summary>
       <input
@@ -81,7 +81,7 @@
         [formControl]="discount"
       />
     </details>
-  </div>
+  </div> -->
   <div class="component flex flex-center">
     <span class="important">{{
       getSubtotal() - (discount.value ?? 0) | currency : "TZS"
@@ -114,3 +114,8 @@
     </div>
   </div>
 </div>
+<request-allert
+  [loading]="allert.loading"
+  [message]="allert.message"
+  [status]="allert.status"
+></request-allert>
