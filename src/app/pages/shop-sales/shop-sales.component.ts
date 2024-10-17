@@ -111,7 +111,12 @@ export class ShopSalesComponent implements OnInit {
       });
   }
   handleAllert(status: boolean) {
-    this.allert = { ...this.allert, loading: false, message: '' };
+    this.allert = {
+      ...this.allert,
+      loading: false,
+      message: '',
+      status: undefined,
+    };
   }
   addItem() {
     this.items.push({
