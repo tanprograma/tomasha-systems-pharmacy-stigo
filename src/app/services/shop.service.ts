@@ -1,4 +1,10 @@
-import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import {
+  inject,
+  Injectable,
+  PLATFORM_ID,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { InventoryService } from './inventory.service';
 import { StoreService } from './store.service';
 import { HttpService } from './http.service';
@@ -15,7 +21,7 @@ import { UnitService } from './unit.service';
 import { Unit } from '../interfaces/unit';
 import { CategoryService } from './category.service';
 import { Category } from '../interfaces/category';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { environment } from '../../environments/environment';
 import { Transfer } from '../interfaces/request';
 import { TransactionItem } from '../interfaces/transaction-item';
@@ -54,6 +60,7 @@ export class ShopService {
   statisticsService = inject(StatisticsService);
   http = inject(HttpService);
   document = inject(DOCUMENT);
+  appID = inject(PLATFORM_ID);
   BASE_URL =
     environment.env == 'development'
       ? environment.origin
@@ -82,12 +89,15 @@ export class ShopService {
     sessionStorage.setItem('store', JSON.stringify(data));
   }
   getCurrentUser() {
-    const user = sessionStorage.getItem('user');
-    if (user == null) {
-      return undefined;
-    } else {
-      return JSON.parse(user) as User;
+    if (isPlatformBrowser(this.appID)) {
+      const user = sessionStorage.getItem('user');
+      if (user == null) {
+        return undefined;
+      } else {
+        return JSON.parse(user) as User;
+      }
     }
+    return undefined;
   }
   getCurrentStore() {
     const store = sessionStorage.getItem('store');

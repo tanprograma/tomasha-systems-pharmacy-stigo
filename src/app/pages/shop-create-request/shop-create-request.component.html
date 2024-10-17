@@ -92,11 +92,10 @@
   </div>
 
   }
-
-  <request-allert
-    [loading]="allert.loading"
-    [status]="allert.status"
-    [message]="allert.message"
-    (onSubmit)="handleAllert($event)"
-  ></request-allert>
 </div>
+<request-allert
+  [loading]="allert.loading"
+  [status]="allert.status"
+  [message]="allert.message"
+  (onSubmit)="handleAllert($event)"
+></request-allert>
