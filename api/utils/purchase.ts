@@ -34,7 +34,7 @@ export class PurchaseUtil {
       await PurchaseUtil.updateInventoryQuantity(
         result.destination,
         item.product,
-        item.received
+        item.received * item.unit_value
       );
     }
     return PurchaseUtil.populateRequest(result, products, stores, suppliers);

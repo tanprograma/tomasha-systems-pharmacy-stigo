@@ -41,6 +41,10 @@ export class ShopComponent implements OnInit {
       name: 'receive purchase',
       url: `receive-purchase`,
     },
+    {
+      name: 'manage inventory',
+      url: `manage-inventory`,
+    },
   ];
   appLinks: { name: string; url: string }[] = [
     {

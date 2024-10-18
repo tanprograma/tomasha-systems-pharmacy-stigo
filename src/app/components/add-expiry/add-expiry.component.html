@@ -1,0 +1,12 @@
+<render-inventory [inventory]="inventory"></render-inventory>
+<form class="component flex flex-center" [formGroup]="form" (ngSubmit)="add()">
+  <input
+    class="input-primary flex-15"
+    type="date"
+    name="expiry"
+    id="expiry"
+    formControlName="expiry"
+  />
+
+  <button class="btn-primary flex-10">SAVE EXPIRY</button>
+</form>

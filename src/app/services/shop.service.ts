@@ -314,6 +314,36 @@ export class ShopService {
       }`
     );
   }
+  updateInventory(action: {
+    type: string;
+    inventoryID: string;
+    data: unknown;
+  }) {
+    switch (action.type) {
+      case 'inventory': {
+        return this.inventoryService.addBegginingInventory(
+          `${this.INVENTORY_API}/beginning-quantity/${action.inventoryID}`,
+          action.data as { quantity: number }
+        );
+      }
+      case 'prices': {
+        return this.inventoryService.editPrice(
+          `${this.INVENTORY_API}/update-price/${action.inventoryID}`,
+          action.data as { unit: string; value: number }[]
+        );
+      }
+      case 'expiry': {
+        return this.inventoryService.addExpiry(
+          `${this.INVENTORY_API}/update-expiry/${action.inventoryID}`,
+          action.data as { expiry: string }
+        );
+      }
+
+      default: {
+        throw new Error('wrong action');
+      }
+    }
+  }
   editInventoryPrice(
     inventoryID: string,
     data: { unit: string; value: number }[]
@@ -323,8 +353,16 @@ export class ShopService {
       data
     );
   }
+  // redundant
   addBegginingInventory(inventoryID: string, data: { quantity: number }) {
     return this.inventoryService.addBegginingInventory(
+      `${this.INVENTORY_API}/beginning-quantity/${inventoryID}`,
+      data
+    );
+  }
+  // redundant
+  addExpiry(inventoryID: string, data: { expiry: string }) {
+    return this.inventoryService.addExpiry(
       `${this.INVENTORY_API}/beginning-quantity/${inventoryID}`,
       data
     );

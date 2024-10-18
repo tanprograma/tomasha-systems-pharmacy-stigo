@@ -50,6 +50,18 @@ export class InventoryService {
         )
       );
   }
+  addExpiry(api: string, data: { expiry: string }) {
+    return this.http
+      .patch<{ expiry: string }, PostResponse<Inventory>>(api, data)
+      .pipe(
+        catchError(
+          this.http.handleError<PostResponse<Inventory>>(
+            'could not update expiry',
+            { status: false }
+          )
+        )
+      );
+  }
   // getProductFromInventories(productName: string, inventories: Inventory[]) {
   //   // inventory product
   //   return inventories.find(

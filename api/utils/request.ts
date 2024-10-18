@@ -32,12 +32,12 @@ export class RequestUtil {
         RequestUtil.updateInventoryQuantity(
           result.store,
           item.product,
-          0 - item.received
+          (0 - item.received) * item.unit_value
         ),
         RequestUtil.updateInventoryQuantity(
           result.destination,
           item.product,
-          item.received
+          item.received * item.unit_value
         ),
       ]);
     }

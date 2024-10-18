@@ -10,6 +10,8 @@ import { ShopIssueRequestComponent } from '../pages/shop-issue-request/shop-issu
 import { ShopReceivePurchaseComponent } from '../pages/shop-receive-purchase/shop-receive-purchase.component';
 import { ShopSellBackdateComponent } from '../pages/shop-sell-backdate/shop-sell-backdate.component';
 import { ShopService } from '../services/shop.service';
+
+import { ManageInventoryComponent } from '../components/manage-inventory/manage-inventory.component';
 export const routes: Routes = [
   {
     path: '',
@@ -35,5 +37,9 @@ export const routes: Routes = [
   {
     path: 'issue-requests',
     component: ShopIssueRequestComponent,
+  },
+  {
+    path: 'manage-inventory',
+    component: ManageInventoryComponent,
   },
 ];

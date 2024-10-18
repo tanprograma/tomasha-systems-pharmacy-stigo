@@ -11,11 +11,14 @@ router.get('/store/:id', async (req, res) => {
   res.send(items);
 });
 router.patch('/update-price/:id', async (req, res) => {
-  const inventory = await InventoryModel.findOne({ _id: req.params.id });
-  inventory.prices = req.body;
-  const result = await inventory.save();
+  const result = await DBUTILS.addPrices(req.params.id, req.body);
   res.send({ result, status: true });
 });
+router.patch('/update-expiry/:id', async (req, res) => {
+  const result = await DBUTILS.addExpiry(req.params.id, req.body);
+  res.send({ result, status: true });
+});
+
 router.patch('/beginning-quantity/:id', async (req, res) => {
   const result = await DBUTILS.addBeginningInventory(req.params.id, req.body);
   res.send({ result, status: true });

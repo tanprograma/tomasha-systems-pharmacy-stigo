@@ -1,0 +1,26 @@
+<render-inventory [inventory]="inventory"></render-inventory>
+<form class="component flex flex-center" [formGroup]="form" (ngSubmit)="add()">
+  <input
+    class="input-primary flex-15"
+    type="number"
+    name="quantity"
+    id="quantity"
+    formControlName="quantity"
+  />
+  <select
+    class="input-primary flex-15"
+    name="unit"
+    id="unit"
+    [value]="inventory.quantity"
+    formControlName="unit"
+  >
+    <option value="" disabled>select unit</option>
+    @for (item of getUnits(); track $index) {
+    <option [value]="item.name">{{ item.name }}</option>
+
+    }
+  </select>
+  <button class="btn-primary flex-10" [disabled]="form.invalid">
+    ADD QUANTITY
+  </button>
+</form>

@@ -34,6 +34,31 @@ export class DBUTILS {
       InventoryModel.findOne({ _id: id }),
     ]);
 
+    inventory.quantity = payload.quantity;
+    const item = await inventory.save();
+
+    const product = DBUTILS.getProductFromID(item.product, products);
+    return {
+      _id: item._id,
+      store: DBUTILS.findStore(item.store, stores),
+      product: {
+        _id: product._id,
+        name: product.name,
+        units: product.units,
+        category: product.category,
+      },
+      quantity: item.quantity,
+      prices: item.prices,
+      expiry: item.expiry,
+    };
+  }
+  static async addInventory(id: string, payload: { quantity: number }) {
+    const [products, stores, inventory] = await Promise.all([
+      ProductModel.find(),
+      StoreModel.find(),
+      InventoryModel.findOne({ _id: id }),
+    ]);
+
     inventory.quantity += payload.quantity;
     const item = await inventory.save();
 
@@ -49,6 +74,59 @@ export class DBUTILS {
       },
       quantity: item.quantity,
       prices: item.prices,
+    };
+  }
+  static async addPrices(
+    id: string,
+    payload: { unit: string; value: number }[]
+  ) {
+    const [products, stores, inventory] = await Promise.all([
+      ProductModel.find(),
+      StoreModel.find(),
+      InventoryModel.findOne({ _id: id }),
+    ]);
+
+    inventory.prices = payload;
+    const item = await inventory.save();
+
+    const product = DBUTILS.getProductFromID(item.product, products);
+    return {
+      _id: item._id,
+      store: DBUTILS.findStore(item.store, stores),
+      product: {
+        _id: product._id,
+        name: product.name,
+        units: product.units,
+        category: product.category,
+      },
+      quantity: item.quantity,
+      prices: item.prices,
+      expiry: item.expiry,
+    };
+  }
+  static async addExpiry(id: string, payload: { expiry: string }) {
+    const [products, stores, inventory] = await Promise.all([
+      ProductModel.find(),
+      StoreModel.find(),
+      InventoryModel.findOne({ _id: id }),
+    ]);
+
+    inventory.expiry = payload.expiry;
+    const item = await inventory.save();
+
+    const product = DBUTILS.getProductFromID(item.product, products);
+    return {
+      _id: item._id,
+      store: DBUTILS.findStore(item.store, stores),
+      product: {
+        _id: product._id,
+        name: product.name,
+        units: product.units,
+        category: product.category,
+      },
+      quantity: item.quantity,
+      prices: item.prices,
+      expiry: item.expiry,
     };
   }
   static findStore(id: string, stores: Store[]) {

@@ -1,0 +1,96 @@
+<div class="page">
+  <div class="component">
+    <h1 class="text-center">
+      {{ storeConfig().store_name | uppercase }} MANAGE INVENTORIES
+    </h1>
+  </div>
+
+  @if (view=='all') {
+  <div class="component flex flex-center">
+    <input
+      class="flex-30"
+      type="text"
+      (keyup)="search($event)"
+      placeholder="type to search product"
+    />
+    <button class="btn-secondary--round">
+      <fa-icon [icon]="searchIcon"> </fa-icon>
+    </button>
+  </div>
+  <ul class="component view-all">
+    @for (item of displayed(); track $index) {
+    <li class="flex flex-center">
+      <div class="flex-5">
+        <prop-card [title]="'sn'" [content]="$index + 1"></prop-card>
+      </div>
+      <div class="flex-30">
+        <prop-card
+          [title]="'product'"
+          [content]="parseProduct(item.product).name"
+        ></prop-card>
+      </div>
+      <div class="flex-15">
+        <prop-card
+          [title]="'sn'"
+          [content]="parseProduct(item.product).category"
+        ></prop-card>
+      </div>
+      <div class="flex-10">
+        <prop-card-action
+          [content]="'manage'"
+          (onClick)="viewToggler({ type: 'edit', inventory: item })"
+        ></prop-card-action>
+      </div>
+    </li>
+    }
+  </ul>
+  }@else {
+
+  <div class="component flex">
+    <button class="btn-secondary--round mr-auto" (click)="back()">
+      <fa-icon [icon]="icon"></fa-icon>
+    </button>
+    <button
+      class="btn-toggle"
+      [class.btn-primary]="view == 'inventory' || view == 'edit'"
+      (click)="viewToggler({ type: 'inventory' })"
+    >
+      inventory
+    </button>
+    <button
+      class="btn-toggle"
+      [class.btn-primary]="view == 'expiry'"
+      (click)="viewToggler({ type: 'expiry' })"
+    >
+      expiry</button
+    ><button
+      class="btn-toggle"
+      [class.btn-primary]="view == 'prices'"
+      (click)="viewToggler({ type: 'prices' })"
+    >
+      prices
+    </button>
+  </div>
+  @if (view=='inventory' && inventory!=undefined) {
+  <add-inventory
+    [inventory]="inventory"
+    (onSubmit)="updateInventory($event)"
+  ></add-inventory>
+  } @if (view=='prices' && inventory!=undefined) {
+  <add-price
+    [inventory]="inventory"
+    (onSubmit)="updateInventory($event)"
+  ></add-price>
+  } @if (view=='expiry' && inventory!=undefined) {
+  <add-expiry
+    [inventory]="inventory"
+    (onSubmit)="updateInventory($event)"
+  ></add-expiry>
+  } }
+</div>
+<request-allert
+  [message]="allert.message"
+  [loading]="allert.loading"
+  [status]="allert.status"
+  (onSubmit)="handleAllert($event)"
+></request-allert>

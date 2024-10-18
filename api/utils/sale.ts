@@ -12,11 +12,7 @@ export class SaleUtil {
       SaleModel.create(data),
     ]);
     for (let item of sale.products) {
-      await SaleUtil.updateInventoryQuantity(
-        sale.store,
-        item.product,
-        item.quantity
-      );
+      await SaleUtil.updateInventoryQuantity(sale.store, item);
     }
     return SaleUtil.populateSale(sale, products);
   }
@@ -27,11 +23,7 @@ export class SaleUtil {
     ]);
     for (let sale of sales) {
       for (let item of sale.products) {
-        await SaleUtil.updateInventoryQuantity(
-          sale.store,
-          item.product,
-          item.quantity
-        );
+        await SaleUtil.updateInventoryQuantity(sale.store, item);
       }
     }
     return SaleUtil.populateSales(sales, products);
@@ -98,16 +90,12 @@ export class SaleUtil {
   static async getProducts() {
     return ProductModel.find();
   }
-  static async updateInventoryQuantity(
-    storeID: string,
-    productID: string,
-    quantity: number
-  ) {
+  static async updateInventoryQuantity(storeID: string, item: any) {
     const inventory = await InventoryModel.findOne({
       store: storeID,
-      product: productID,
+      product: item.product,
     });
-    inventory.quantity -= quantity;
+    inventory.quantity -= item.quantity * item.unit_value;
     return inventory.save();
   }
   static getProductID(id: string, products: Product[]) {

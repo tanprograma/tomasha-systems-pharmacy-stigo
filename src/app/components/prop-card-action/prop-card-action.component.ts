@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './prop-card-action.component.scss',
 })
 export class PropCardActionComponent {
-  @Input() title!: string;
+  @Input() title?: string;
   @Input() content!: string;
   @Output() onClick = new EventEmitter<boolean>();
   action() {

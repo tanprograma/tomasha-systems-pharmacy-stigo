@@ -1,0 +1,23 @@
+<div class="component flex flex-center">
+  <div class="flex-30">
+    <prop-card [title]="'product'" [content]="parseProduct().name"></prop-card>
+  </div>
+  <div class="flex-15">
+    <prop-card
+      [title]="'category'"
+      [content]="parseProduct().category"
+    ></prop-card>
+  </div>
+  <div class="flex-10">
+    <prop-card [title]="'unit'" [content]="'each'"></prop-card>
+  </div>
+  <div class="flex-15">
+    <prop-card [title]="'quantity'" [content]="inventory.quantity"></prop-card>
+  </div>
+  <div class="flex-15">
+    <prop-card
+      [title]="'expiry'"
+      [content]="inventory.expiry != undefined ? parseDate() : 'not set'"
+    ></prop-card>
+  </div>
+</div>

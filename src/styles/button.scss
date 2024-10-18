@@ -9,6 +9,13 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
+.btn-toggle {
+  min-width: 8rem;
+}
+.btn-selected {
+  background-color: blue;
+  color: white;
+}
 .btn-primary {
   background-color: blue;
   color: white;

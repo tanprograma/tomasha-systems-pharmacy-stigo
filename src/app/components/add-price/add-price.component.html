@@ -1,0 +1,19 @@
+<render-inventory [inventory]="inventory"></render-inventory>
+<ul class="component">
+  @for (item of inventory.prices; track $index) {
+  <li class="flex flex-center">
+    <div class="flex-20">
+      {{ item.unit }}
+    </div>
+    <input
+      class="input-primary flex-10"
+      type="number"
+      [value]="item.value"
+      (keyup)="changePrice($event, item.unit)"
+    />
+  </li>
+  }
+</ul>
+<div class="component flex flex-center">
+  <button class="btn-primary flex-10" (click)="add()">SAVE PRICES</button>
+</div>
