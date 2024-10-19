@@ -1,12 +1,5 @@
 <render-inventory [inventory]="inventory"></render-inventory>
 <form class="component flex flex-center" [formGroup]="form" (ngSubmit)="add()">
-  <input
-    class="input-primary flex-15"
-    type="number"
-    name="quantity"
-    id="quantity"
-    formControlName="quantity"
-  />
   <select
     class="input-primary flex-15"
     name="unit"
@@ -20,6 +13,14 @@
 
     }
   </select>
+  <input
+    class="input-primary flex-15"
+    type="number"
+    name="quantity"
+    id="quantity"
+    formControlName="quantity"
+  />
+
   <button class="btn-primary flex-10" [disabled]="form.invalid">
     ADD QUANTITY
   </button>

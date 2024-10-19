@@ -93,12 +93,12 @@ export class ManageInventoryComponent implements OnInit {
     inventoryID: string;
     data: unknown;
   }) {
+    this.allert = {
+      ...this.allert,
+      loading: true,
+      message: 'updating inventory',
+    };
     this.shopService.updateInventory(action).subscribe((res) => {
-      this.allert = {
-        ...this.allert,
-        loading: true,
-        message: 'updating inventory',
-      };
       if (res.status) {
         this.inventory = res.result;
         this.inventories.update((v) => {
