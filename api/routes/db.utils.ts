@@ -214,6 +214,7 @@ export class DBUTILS {
         },
         quantity: item.quantity,
         prices: item.prices,
+        expiry: item.expiry,
       };
     });
   }

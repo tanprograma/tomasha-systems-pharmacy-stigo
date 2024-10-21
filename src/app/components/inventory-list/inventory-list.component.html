@@ -60,7 +60,7 @@
         [content]="renderProductCategory(inventory.product)"
       ></prop-card>
     </div>
-    <div class="flex-5">
+    <div class="flex-10">
       <prop-card
         [title]="'unit'"
         [content]="getLargestUnit(inventory.product).name"
@@ -73,6 +73,7 @@
         [content]="renderQuantity(inventory)"
       ></prop-card>
     </div>
+
     <div class="flex-10">
       <prop-card-action
         [content]="'back'"
