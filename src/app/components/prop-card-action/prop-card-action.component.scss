@@ -9,3 +9,12 @@
   font-size: 1.5rem;
   margin-top: 5px;
 }
+button {
+  color: white;
+  background-color: blue;
+  border: 0;
+}
+button:hover {
+  background-color: black;
+  color: white;
+}
