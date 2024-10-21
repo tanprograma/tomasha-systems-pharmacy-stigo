@@ -34,6 +34,9 @@
       ></prop-card>
     </div>
     <div class="flex-10">
+      <prop-card [title]="'expiry'" [content]="parseDate(item)"></prop-card>
+    </div>
+    <div class="flex-10">
       <prop-card-action
         [content]="'more'"
         (onClick)="view(item)"

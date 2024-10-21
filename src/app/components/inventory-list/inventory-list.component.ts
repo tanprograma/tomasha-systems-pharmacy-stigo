@@ -47,6 +47,13 @@ export class InventoryListComponent {
     const unit = this.getLargestUnit(item.product);
     return item.quantity / unit.value;
   }
+  parseDate(item: Inventory) {
+    if (item.expiry == undefined) {
+      return 'not set';
+    } else {
+      return new Date(item.expiry).toLocaleDateString();
+    }
+  }
   getLargestUnit(product: Product | string) {
     return (product as Product).units.sort((a, b) => {
       if (a.value < b.value) return 1;
