@@ -1,0 +1,22 @@
+.flex-20 {
+  flex: 0 0 20%;
+}
+
+.flex-30 {
+  flex: 0 0 30%;
+}
+
+.sales-view {
+  max-height: 40vh;
+  overflow-y: scroll;
+}
+
+.more {
+  margin-left: auto;
+  background-color: black;
+  color: white;
+}
+
+.more:hover {
+  background-color: blue;
+}/*# sourceMappingURL=shop-sales.component.css.map */

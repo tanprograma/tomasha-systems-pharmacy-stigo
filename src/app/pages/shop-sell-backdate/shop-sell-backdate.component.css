@@ -1,0 +1,14 @@
+.sales-view {
+  max-height: 40vh;
+  overflow-y: scroll;
+}
+
+.more {
+  margin-left: auto;
+  background-color: black;
+  color: white;
+}
+
+.more:hover {
+  background-color: blue;
+}/*# sourceMappingURL=shop-sell-backdate.component.css.map */

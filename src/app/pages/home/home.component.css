@@ -1,0 +1,12 @@
+.page {
+  display: flex;
+}
+
+.menu {
+  flex: 0 1 20%;
+  overflow-y: scroll;
+}
+
+.main-content {
+  flex: 0 1 80%;
+}/*# sourceMappingURL=home.component.css.map */

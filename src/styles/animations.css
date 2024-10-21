@@ -1,0 +1,4 @@
+.spinning {
+  transform: rotate(360);
+  transition: all 0.1 ease-in-out infinite;
+}/*# sourceMappingURL=animations.css.map */

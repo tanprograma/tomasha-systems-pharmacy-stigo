@@ -1,0 +1,93 @@
+button {
+  padding: 5px;
+  height: 2rem;
+  border-radius: 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.btn-toggle {
+  min-width: 8rem;
+}
+
+.btn-selected {
+  background-color: blue;
+  color: white;
+}
+
+.btn-primary {
+  background-color: blue;
+  color: white;
+  min-width: 8rem;
+  border: 0;
+}
+
+.btn-danger:hover {
+  background-color: red;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: pink;
+  color: black;
+  border: 0;
+  min-width: 8rem;
+}
+
+.btn-neutral {
+  background-color: white;
+  border: 1px solid black;
+  min-width: 8rem;
+}
+
+.btn-neutral:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-primary--round {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 1rem;
+  background-color: blue;
+  color: white;
+  border: 0;
+}
+
+.btn-neutral--round {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 1rem;
+  background-color: black;
+  color: white;
+  border: 0;
+}
+
+.btn-neutral--round:hover {
+  background-color: red;
+}
+
+.btn-danger--round {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 1rem;
+  background-color: black;
+  color: white;
+  border: 0;
+}
+
+.btn-danger--round:hover {
+  background-color: red;
+}
+
+.btn-secondary--round {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 1rem;
+  background-color: pink;
+  color: black;
+}/*# sourceMappingURL=button.css.map */

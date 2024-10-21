@@ -4,7 +4,7 @@
 </div>
 <ul class="component">
   @for (item of inventories(); track $index) {
-  <li class="flex">
+  <li class="flex flex-center">
     <div class="flex-5">
       <prop-card [title]="'SN'" [content]="$index + 1"></prop-card>
     </div>
@@ -20,20 +20,20 @@
         [content]="renderProductCategory(item.product)"
       ></prop-card>
     </div>
-    <div class="flex-5">
+    <div class="flex-10">
       <prop-card
         [title]="'unit'"
         [content]="getLargestUnit(item.product).name"
       ></prop-card>
     </div>
 
-    <div class="flex-10">
+    <div class="flex-15">
       <prop-card
         [title]="'available'"
         [content]="renderQuantity(item)"
       ></prop-card>
     </div>
-    <div class="flex-10">
+    <div class="flex-15">
       <prop-card [title]="'expiry'" [content]="parseDate(item)"></prop-card>
     </div>
     <div class="flex-10">

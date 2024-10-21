@@ -1,0 +1,21 @@
+.page {
+  display: flex;
+}
+
+.menu {
+  flex: 0 1 25%;
+}
+
+.links {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.menu-content {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.main-content {
+  flex: 0 1 75%;
+}/*# sourceMappingURL=admin.component.css.map */
