@@ -6,6 +6,10 @@ import { ProductModel } from '../models/product';
 import { SaleModel } from '../models/sale';
 
 export class SaleUtil {
+  static async migrateSale(data: any) {
+    const sale = await SaleModel.create(data);
+    return sale;
+  }
   static async createSale(data: any) {
     let [products, sale] = await Promise.all([
       SaleUtil.getProducts(),
