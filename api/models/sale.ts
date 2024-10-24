@@ -16,6 +16,7 @@ const schema = new Schema<Sale>(
     store: String,
     products: [productSchema],
     discount: Number,
+    customer: String,
   },
   { timestamps: true }
 );
