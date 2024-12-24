@@ -34,8 +34,15 @@
       ></prop-card>
     </div>
     <div class="flex-15">
-      <prop-card [title]="'expiry'" [content]="parseDate(item)"></prop-card>
+      <prop-card-date
+        [title]="'expiry'"
+        [content]="parseDate(item)"
+        [color]="backgroundColor(item.expiry)"
+      ></prop-card-date>
     </div>
+    <!-- <div class="flex-15">
+      <prop-card [title]="'expiry'" [content]="parseDate(item)"></prop-card>
+    </div> -->
     <div class="flex-10">
       <prop-card-action
         [content]="'more'"

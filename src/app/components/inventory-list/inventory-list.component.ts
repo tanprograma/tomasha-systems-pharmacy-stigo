@@ -12,6 +12,7 @@ import { PropCardComponent } from '../prop-card/prop-card.component';
 import { PropCardActionComponent } from '../prop-card-action/prop-card-action.component';
 import { InventoryFilterComponent } from '../inventory-filter/inventory-filter.component';
 import { InventoryFilter } from '../../interfaces/inventory-filter';
+import { PropCardDateComponent } from '../prop-card-date/prop-card-date.component';
 
 @Component({
   selector: 'inventory-list',
@@ -20,6 +21,7 @@ import { InventoryFilter } from '../../interfaces/inventory-filter';
     PropCardComponent,
     PropCardActionComponent,
     InventoryFilterComponent,
+    PropCardDateComponent,
   ],
   templateUrl: './inventory-list.component.html',
   styleUrl: './inventory-list.component.scss',
@@ -45,7 +47,7 @@ export class InventoryListComponent {
   }
   renderQuantity(item: Inventory) {
     const unit = this.getLargestUnit(item.product);
-    return item.quantity / unit.value;
+    return Math.round(item.quantity / unit.value);
   }
   parseDate(item: Inventory) {
     if (item.expiry == undefined) {
@@ -65,5 +67,18 @@ export class InventoryListComponent {
     return (product as Product).units.find((u) => {
       return u.name == unit;
     })?.value as number;
+  }
+  backgroundColor(d: string | undefined) {
+    if (d != undefined) {
+      const dayMilleSeconds = 1000 * 60 * 60 * 24;
+      const expiryDate = new Date(d).getTime();
+
+      const remainingDays = (expiryDate - Date.now()) / dayMilleSeconds;
+
+      if (remainingDays > 90) return 'blue';
+      return 'red';
+    } else {
+      return 'purple';
+    }
   }
 }
