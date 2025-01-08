@@ -1,0 +1,31 @@
+<div class="page">
+  <div class="component">
+    <h1 class="text-center">
+      {{ storeConfig().store_name | uppercase }} DETAILED RECEIVED DATA
+    </h1>
+  </div>
+
+  <div class="component">
+    <filter-universal (onFilter)="filterRequests($event)"></filter-universal>
+  </div>
+  <div class="component">
+    <h1 class="text-center">received summary</h1>
+    <div class="flex">
+      <div class="flex-20">
+        <prop-card
+          [title]="'requests'"
+          [content]="requests().length"
+        ></prop-card>
+      </div>
+      <div class="flex-20">
+        <prop-card
+          [title]="'items'"
+          [content]="displayed_requests().length"
+        ></prop-card>
+      </div>
+    </div>
+  </div>
+  <div class="component">
+    <received-info [items]="displayed_requests()"></received-info>
+  </div>
+</div>

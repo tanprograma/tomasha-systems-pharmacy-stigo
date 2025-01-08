@@ -8,6 +8,12 @@ export interface RequestFilter {
   store: string;
   destination: string;
 }
+export interface NewRequestFilter {
+  date: string;
+  store: string;
+  destination: string;
+  product: string;
+}
 export interface PurchaseFilter {
   date: string;
   supplier: string;

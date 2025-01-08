@@ -61,6 +61,7 @@ export class ShopComponent implements OnInit {
     { name: 'dispensed', url: '' },
     { name: 'purchases', url: 'purchases' },
     { name: 'requests', url: 'requests' },
+    { name: 'received', url: 'received' },
     { name: 'inventories', url: 'inventories' },
   ];
 
