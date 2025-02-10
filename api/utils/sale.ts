@@ -48,6 +48,18 @@ export class SaleUtil {
       return SaleUtil.populateSales(sales, products);
     }
   }
+  static async getCount(store?: string) {
+    //   get sales
+    if (store != undefined) {
+      let query = await SaleModel.find({ store: store });
+
+      return query;
+    } else {
+      let query = SaleModel.find();
+
+      return query;
+    }
+  }
   static async getSales(store?: string) {
     //   get sales
     if (store != undefined) {

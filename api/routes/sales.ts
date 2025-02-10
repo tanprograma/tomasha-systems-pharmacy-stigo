@@ -7,6 +7,11 @@ router.get('/', async (req, res) => {
   const sales = await SaleUtil.getAllSales();
   res.send(sales);
 });
+router.get('/count', async (req, res) => {
+  const id = req.query['store'];
+  const sales = await SaleUtil.getCount(id as string | undefined);
+  res.send(sales);
+});
 router.get('/store/:id', async (req, res) => {
   const sales = await SaleUtil.getAllSales(req.params.id);
   res.send(sales);
