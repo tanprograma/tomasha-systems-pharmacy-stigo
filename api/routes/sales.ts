@@ -8,17 +8,13 @@ router.get('/', async (req, res) => {
   res.send(sales);
 });
 router.get('/count', async (req, res) => {
-  const id = req.query['store'];
-  const sales = await SaleUtil.getCount(id as string | undefined);
-  sales.count((err: any, count: number) => {
-    if (err) {
-      console.log(err);
-      res.send({ count: 0 });
-    } else {
-      res.send({ count });
-    }
-  });
-  res.send(sales);
+  const filter =
+    req.query['store'] != undefined
+      ? { store: req.query['store'] as string }
+      : {};
+  const query = await SaleModel.countDocuments(filter);
+  console.log(query);
+  res.send({ query });
 });
 router.get('/store/:id', async (req, res) => {
   const sales = await SaleUtil.getAllSales(req.params.id);
