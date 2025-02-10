@@ -10,6 +10,14 @@ router.get('/', async (req, res) => {
 router.get('/count', async (req, res) => {
   const id = req.query['store'];
   const sales = await SaleUtil.getCount(id as string | undefined);
+  sales.count((err: any, count: number) => {
+    if (err) {
+      console.log(err);
+      res.send({ count: 0 });
+    } else {
+      res.send({ count });
+    }
+  });
   res.send(sales);
 });
 router.get('/store/:id', async (req, res) => {
