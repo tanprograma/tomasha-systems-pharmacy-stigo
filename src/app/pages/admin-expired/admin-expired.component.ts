@@ -69,6 +69,13 @@ export class AdminExpiredComponent {
         // console.log(res.result);
       }
       this.loading = false;
+      this.expiryForm.patchValue({
+        product: '',
+        unit: '',
+        status: false,
+        quantity: 0,
+        expiry: '',
+      });
     });
   }
   reparseData(expired: Expired) {
