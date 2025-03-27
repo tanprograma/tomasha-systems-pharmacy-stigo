@@ -1,0 +1,21 @@
+table {
+  background-color: white;
+  border-collapse: collapse;
+  padding: 5px;
+  margin: 5px auto;
+}
+
+th {
+  text-align: left;
+}
+
+th,
+td {
+  margin: 0 10px;
+  padding: 5px;
+}
+
+tbody tr,
+tfoot tr {
+  border-top: 1px solid black;
+}/*# sourceMappingURL=table.css.map */

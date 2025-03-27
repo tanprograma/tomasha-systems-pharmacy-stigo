@@ -1,0 +1,73 @@
+.expire-app {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.input-primary {
+  width: 100%;
+}
+.control {
+  min-width: 30%;
+}
+.form-container {
+  position: absolute;
+  width: 80%;
+  height: 97%;
+  right: 10%;
+  left: 10%;
+
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cancel-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.loader-container {
+  height: 100%;
+}
+.floating {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+li {
+  display: flex;
+
+  border: 1px solid grey;
+}
+.sn {
+  flex: 0 0 5%;
+}
+.product {
+  flex: 0 0 35%;
+}
+.unit {
+  flex: 0 0 15%;
+}
+.quantity {
+  flex: 0 0 15%;
+}
+.expiry {
+  flex: 0 0 20%;
+}
+.status {
+  flex: 0 0 10%;
+}
+span {
+  display: block;
+}
+span.title {
+  font-size: 12px;
+}
+.destroyed {
+  background-color: blue;
+  color: white;
+}
+.not-destroyed {
+  background-color: red;
+  color: white;
+}

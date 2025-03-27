@@ -7,6 +7,7 @@ import { CreateCategoryComponent } from '../pages/create-category/create-categor
 import { CreateStoreComponent } from '../pages/create-store/create-store.component';
 import { CreateSupplierComponent } from '../pages/create-supplier/create-supplier.component';
 import { AdminUserComponent } from '../pages/admin-user/admin-user.component';
+import { AdminExpiredComponent } from '../pages/admin-expired/admin-expired.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/admin/logs', pathMatch: 'full' },
@@ -18,4 +19,5 @@ export const routes: Routes = [
   { path: 'create-store', component: CreateStoreComponent },
   { path: 'create-supplier', component: CreateSupplierComponent },
   { path: 'create-users', component: AdminUserComponent },
+  { path: 'expired', component: AdminExpiredComponent },
 ];

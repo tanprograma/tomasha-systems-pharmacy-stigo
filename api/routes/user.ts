@@ -37,18 +37,23 @@ router.post('/login', async (req, res) => {
   res.send({ status: false });
 });
 router.post('/create', async (req, res) => {
-  const unhashedUser = req.body;
-  const hash = await bcrypt.hash(unhashedUser.password, 10);
-  unhashedUser.password = hash;
-  const user = await UserModel.create(unhashedUser);
+  try {
+    const unhashedUser = req.body;
+    const hash = await bcrypt.hash(unhashedUser.password, 10);
+    unhashedUser.password = hash;
+    const user = await UserModel.create(unhashedUser);
 
-  const result = {
-    firstname: user.firstname,
-    lastname: user.lastname,
-    email: user.email,
-    role: user.role,
-  };
-  res.send({ result, status: true });
+    const result = {
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      role: user.role,
+    };
+    res.send({ result, status: true });
+  } catch (error: any) {
+    console.log(req.body);
+    res.send({ status: false });
+  }
 });
 router.post('/createmany', async (req, res) => {
   const requests = req.body;

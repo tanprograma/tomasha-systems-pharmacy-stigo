@@ -1,0 +1,16 @@
+li {
+  border: 1px solid lightgrey;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+li:hover {
+  background-color: rgb(181, 240, 226);
+  border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}/*# sourceMappingURL=list.css.map */

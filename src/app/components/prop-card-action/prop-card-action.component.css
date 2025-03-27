@@ -1,0 +1,24 @@
+.prop {
+  height: 100%;
+  width: 100%;
+}
+
+.prop-title {
+  font-size: 0.5rem;
+}
+
+.prop-content {
+  font-size: 1.5rem;
+  margin-top: 5px;
+}
+
+button {
+  color: white;
+  background-color: blue;
+  border: 0;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}/*# sourceMappingURL=prop-card-action.component.css.map */

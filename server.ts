@@ -16,6 +16,7 @@ import suppliers from './api/routes/suppliers';
 import requests from './api/routes/requests';
 import purchases from './api/routes/purchases';
 import users from './api/routes/user';
+import expired from './api/routes/expired';
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ export function app(): express.Express {
   server.use('/api/purchases', purchases);
   server.use('/api/suppliers', suppliers);
   server.use('/api/users', users);
+  server.use('/api/expired', expired);
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);

@@ -1,0 +1,129 @@
+<div class="expire-app">
+  @if (showform) {
+  <div class="form-container component">
+    <div class="cancel-container">
+      <button class="btn-secondary--round" (click)="toggleForm()">
+        <fa-icon [icon]="cross"></fa-icon>
+      </button>
+    </div>
+    @if(loading){
+    <div class="loader-container">
+      <spinner [message]="message" />
+    </div>
+    }@else {
+    <form class="component" [formGroup]="expiryForm" (ngSubmit)="submit()">
+      <div class="control">
+        <label for="product">
+          product
+          <input
+            class="input-primary"
+            name="product"
+            id="product"
+            list="products"
+            autocomplete="off"
+            formControlName="product"
+            (change)="selectUnits()"
+          /><datalist id="products">
+            <option value="">select product</option>
+            @for (item of products; track $index) {
+            <option [value]="item.name">{{ item.name }}</option>
+            }
+          </datalist></label
+        >
+      </div>
+      <div class="control">
+        <label for="unit">
+          unit
+          <select
+            class="input-primary"
+            name="product"
+            id="product"
+            formControlName="unit"
+          >
+            <option value="">select unit</option>
+            @for (item of selectedUnits; track $index) {
+            <option [value]="item.name">{{ item.name }}</option>
+            }
+          </select></label
+        >
+      </div>
+      <div class="control">
+        <label for="quantity">
+          quantity
+          <input
+            class="input-primary"
+            type="number"
+            name="quantity"
+            id="quantity"
+            formControlName="quantity"
+        /></label>
+      </div>
+      <div class="control">
+        <label for="expiry">
+          expiry
+          <input
+            class="input-primary"
+            type="date"
+            name="date"
+            id="date"
+            formControlName="expiry"
+        /></label>
+      </div>
+      <div class="control">
+        <label for="status">
+          status
+          <input
+            type="checkbox"
+            name="status"
+            id="status"
+            formControlName="status"
+        /></label>
+      </div>
+      <button class="btn-primary">add expiry</button>
+    </form>
+    }
+  </div>
+
+  }@else {
+  <button class="btn-primary--round floating" (click)="toggleForm()">
+    <fa-icon [icon]="plusIcon"></fa-icon>
+  </button>
+  }
+  <div class="component">
+    <h2 class="text-center">{{ title | uppercase }}</h2>
+  </div>
+  <ul class="component">
+    @for (item of expired; track $index) {
+    <li>
+      <div class="sn">
+        <span class="title">sn</span>
+        <span class="content">{{ $index + 1 }}</span>
+      </div>
+      <div class="product">
+        <span class="title">product</span>
+        <span class="content">{{ item.name }}</span>
+      </div>
+      <div class="unit">
+        <span class="title">unit</span>
+        <span class="content">{{ item.unit }}</span>
+      </div>
+      <div class="quantity">
+        <span class="title">quantity</span>
+        <span class="content">{{ item.quantity }}</span>
+      </div>
+      <div class="expiry">
+        <span class="title">expiry</span>
+        <span class="content">{{ item.expiry }}</span>
+      </div>
+      <div
+        class="status"
+        [class.destroyed]="item.status"
+        [class.not-destroyed]="!item.status"
+      >
+        <span class="title">status</span>
+        <span class="content">{{ item.status ? "destroyed" : "pending" }}</span>
+      </div>
+    </li>
+    }
+  </ul>
+</div>

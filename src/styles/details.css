@@ -1,0 +1,10 @@
+summary:hover {
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+}
+
+summary {
+  padding: 5px;
+  border-radius: 5px;
+}/*# sourceMappingURL=details.css.map */

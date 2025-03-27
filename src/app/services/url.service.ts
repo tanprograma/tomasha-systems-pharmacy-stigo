@@ -18,6 +18,7 @@ export class UrlService {
   PRODUCT_API = `${this.BASE_URL}/api/products`;
   CATEGORY_API = `${this.BASE_URL}/api/categories`;
   REQUEST_API = `${this.BASE_URL}/api/requests`;
+  EXPIRED_API = `${this.BASE_URL}/api/expired`;
 
   constructor() {}
 }

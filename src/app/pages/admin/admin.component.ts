@@ -23,6 +23,7 @@ export class AdminComponent implements OnInit {
     { url: '/admin/create-inventory', name: 'inventory' },
     { url: '/admin/create-supplier', name: 'supplier' },
     { url: '/admin/create-users', name: 'users' },
+    { url: '/admin/expired', name: 'expired' },
   ];
   appLinks = [
     { url: '/admin', name: 'admin' },
