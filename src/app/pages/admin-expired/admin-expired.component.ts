@@ -79,6 +79,7 @@ export class AdminExpiredComponent {
     });
   }
   reparseData(expired: Expired) {
+    // for returned or requested data..
     return {
       ...expired,
       name: this.findProductID(expired.product_id)?.name,
